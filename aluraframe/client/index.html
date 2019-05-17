@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Negociações</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap-theme.css" />
+  </head>
+  <body class="container">
+    <h1 class="text-center">Negociações</h1>
+    <div data-js="message"></div>
+    <form class="form" onsubmit="negotiation.add(event)">
+      <div class="form-group">
+        <label for="data">Data</label>
+        <input type="date" data-js="date" class="form-control" required autofocus />
+      </div>
+
+      <div class="form-group">
+        <label for="quantidade">Quantidade</label>
+        <input type="number" min="1" step="1" data-js="quantity" class="form-control" value="1" required />
+      </div>
+
+      <div class="form-group">
+        <label for="valor">Valor</label>
+        <input data-js="value" type="number" class="form-control" min="0.01" step="0.01" value="0.0" required />
+      </div>
+
+      <button class="btn btn-primary" type="submit">Incluir</button>
+    </form>
+
+    <div class="text-center">
+      <button class="btn btn-primary text-center" type="button">
+        Importar Negociações
+      </button>
+      <button data-js="reset" class="btn btn-primary text-center" type="button" onclick="negotiation.clearList()">
+        Apagar
+      </button>
+    </div>
+    <br />
+    <br />
+    <div data-js="table"></div>
+    <script src="./js/app/models/negotiation.model.js"></script>
+    <script src="./js/app/models/listNegotiations.model.js"></script>
+    <script src="./js/app/models/message.model.js"></script>
+    <script src="./js/app/controllers/negotiation.controller.js"></script>
+    <script src="./js/app/helpers/date.helper.js"></script>
+    <script src="./js/app/helpers/bind.helper.js"></script>
+    <script src="./js/app/views/base.view.js"></script>
+    <script src="./js/app/views/negotiation.view.js"></script>
+    <script src="./js/app/views/message.view.js"></script>
+    <script src="./js/app/services/proxy.factory.js"></script>
+    <script>
+      let negotiation = new NegotiationController();
+    </script>
+  </body>
+</html>
